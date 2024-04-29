@@ -30,8 +30,13 @@ struct SliderRepresentation: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
-        uiView.value = currentValue
-        uiView.thumbTintColor = uiView.thumbTintColor?.withAlphaComponent(alpha)
+        if uiView.value != currentValue {
+            uiView.value = currentValue
+        }
+        let newThumbTintColor = UIColor.red.withAlphaComponent(alpha)
+        if uiView.thumbTintColor != newThumbTintColor {
+            uiView.thumbTintColor = newThumbTintColor
+        }
     }
     
     func makeCoordinator() -> Coordinator {

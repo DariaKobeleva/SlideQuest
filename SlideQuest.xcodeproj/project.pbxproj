@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2052235E2BDFEA080069FA79 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052235D2BDFEA080069FA79 /* ButtonView.swift */; };
 		20A044942BDD3B7A00151038 /* SlideQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A044932BDD3B7A00151038 /* SlideQuestApp.swift */; };
 		20A044962BDD3B7A00151038 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A044952BDD3B7A00151038 /* ContentView.swift */; };
 		20A044982BDD3B7B00151038 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20A044972BDD3B7B00151038 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2052235D2BDFEA080069FA79 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		20A044902BDD3B7A00151038 /* SlideQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A044932BDD3B7A00151038 /* SlideQuestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideQuestApp.swift; sourceTree = "<group>"; };
 		20A044952BDD3B7A00151038 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				20A044932BDD3B7A00151038 /* SlideQuestApp.swift */,
 				20A044952BDD3B7A00151038 /* ContentView.swift */,
+				2052235D2BDFEA080069FA79 /* ButtonView.swift */,
 				20A044A12BDD473B00151038 /* SliderRepresentation.swift */,
 				20A044972BDD3B7B00151038 /* Assets.xcassets */,
 				20A044992BDD3B7B00151038 /* Preview Content */,
@@ -142,6 +145,7 @@
 			files = (
 				20A044962BDD3B7A00151038 /* ContentView.swift in Sources */,
 				20A044942BDD3B7A00151038 /* SlideQuestApp.swift in Sources */,
+				2052235E2BDFEA080069FA79 /* ButtonView.swift in Sources */,
 				20A044A22BDD473B00151038 /* SliderRepresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
