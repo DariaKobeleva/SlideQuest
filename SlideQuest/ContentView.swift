@@ -8,35 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var sliderValue: Float = 0
-    @State private var showAlert = false
-    @State private var randomNumber = Int.random(in: 0...100)
     
+    @State private var targetValue = Int.random(in: 0...100)
+    @State private var currentValue: Float = 100
     @State  private var score = 0
-    
+    @State private var alpha: CGFloat = 1
+    @State private var showAlert = false
+
     var body: some View {
         VStack(spacing: 30) {
-            Text("Подвиньте слайдер, как можно ближе к: \(randomNumber) ")
+            Text("Move the slider as close as possible to: \(targetValue) ")
             
-            SliderRepresentation(sliderValue: $sliderValue) {
-                score = computeScore()
+            SliderRepresentation(currentValue: $currentValue, alpha: $alpha) {
+                changeThumbAlpha()
             }
             
-            ButtonView(title: "Проверь меня!", action: { showAlert.toggle() })
-                .alert("Your Score \(score)", isPresented: $showAlert , actions: {})
+            ButtonView(title: "Check me!") {
+                showAlert.toggle()
+            }
+            .alert("Your Score", isPresented: $showAlert , actions: {}) {
+                Text("\(score)")
+            }
             
-            ButtonView(title: "Начать заново") {
-                sliderValue = 0
-                randomNumber = Int.random(in: 0...100)
+            ButtonView(title: "Go again") {
+                currentValue = 0
+                targetValue = Int.random(in: 0...100)
                 score = 0
+                changeThumbAlpha()
             }
         }
         .padding()
+        .onAppear {
+            changeThumbAlpha()
+        }
     }
+    
     private func computeScore() -> Int {
-        let sliderInt = lroundf(sliderValue)
-        let difference = abs(randomNumber - sliderInt)
+        let sliderInt = lroundf(currentValue)
+        let difference = abs(targetValue - sliderInt)
         return 100 - difference
+    }
+    
+    private func changeThumbAlpha() {
+        score = computeScore()
+        alpha = CGFloat(score) / 100
     }
 }
 
