@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var targetValue = Int.random(in: 0...100)
     @State private var currentValue: Float = 50
     @State  private var score = 0
-    @State private var alpha: CGFloat = 0.5
+    @State private var alpha: Double = 0.5
     @State private var showAlert = false
     
     var body: some View {
@@ -20,15 +20,14 @@ struct ContentView: View {
             
             HStack {
                 Text("0")
-                SliderRepresentation(currentValue: $currentValue, alpha: $alpha) {
+                SliderRepresentation(currentValue: $currentValue, alpha: alpha) {
                     changeThumbAlpha()
                 }
                 Text("100")
             }
-            
-            ButtonView(title: "Check me!") {
+            Button("Check me!", action: {
                 showAlert.toggle()
-            }
+            })
             .alert("Your Score", isPresented: $showAlert , actions: {}) {
                 Text("\(score)")
             }
@@ -36,7 +35,7 @@ struct ContentView: View {
                 changeThumbAlpha()
             }
             
-            ButtonView(title: "Go again") {
+            Button("Go again") {
                 currentValue = 50
                 targetValue = Int.random(in: 0...100)
                 score = 0

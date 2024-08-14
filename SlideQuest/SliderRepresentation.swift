@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SliderRepresentation: UIViewRepresentable {
     @Binding var currentValue: Float
-    @Binding var alpha: CGFloat
+    
+    let alpha: Double
     
     let action: () -> Void
     
@@ -17,8 +18,6 @@ struct SliderRepresentation: UIViewRepresentable {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 100
-        slider.value = currentValue
-        slider.thumbTintColor = .red.withAlphaComponent(alpha)
         
         slider.addTarget(
             context.coordinator,
@@ -30,13 +29,8 @@ struct SliderRepresentation: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
-        if uiView.value != currentValue {
             uiView.value = currentValue
-        }
-        let newThumbTintColor = UIColor.red.withAlphaComponent(alpha)
-        if uiView.thumbTintColor != newThumbTintColor {
-            uiView.thumbTintColor = newThumbTintColor
-        }
+            uiView.thumbTintColor = UIColor.red.withAlphaComponent(alpha)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -64,6 +58,6 @@ extension SliderRepresentation {
 }
 
 #Preview {
-    SliderRepresentation(currentValue: .constant(50), alpha: .constant(1)) {}
+    SliderRepresentation(currentValue: .constant(50), alpha: 1) {}
 }
 
